@@ -148,6 +148,3 @@ curl -X GET "https://[PROJECT_REF].supabase.co/rest/v1/todos" \
 - `supabase/functions/ai-proxy`: Deno-based secure AI proxy (Llama 3).
 
 ---
-
-## 📄 License
-MIT
