@@ -106,12 +106,37 @@ npm run dev
 
 ---
 
-## 🔌 API & OpenAPI Documentation
+## 🔌 Backend API & OpenAPI Documentation
 
+### Supabase REST API
 This project utilizes Supabase's auto-generated REST API which follows the OpenAPI (Swagger) specification.
 
-- **OpenAPI Endpoint**: `https://[YOUR_PROJECT_ID].supabase.co/rest/v1/?apikey=[YOUR_ANON_KEY]`
-- **Interactive Docs**: You can view and test the API directly in your **Supabase Dashboard** under the **API Docs** section.
+**Access Points:**
+- **OpenAPI/Swagger Docs**: `https://[YOUR_PROJECT_REF].supabase.co/rest/v1/`
+- **Interactive Playground**: Supabase Dashboard → **API Docs** section
+- **Authentication**: Use `apikey=[ANON_KEY]` header or `?apikey=` query param
+
+### Core Endpoints
+
+#### Todos Table
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/rest/v1/todos` | Fetch all user's todos |
+| `POST` | `/rest/v1/todos` | Create new todo |
+| `PATCH` | `/rest/v1/todos?id=eq.{id}` | Update todo |
+| `DELETE` | `/rest/v1/todos?id=eq.{id}` | Delete todo |
+
+**Example Request:**
+```bash
+curl -X GET "https://[PROJECT_REF].supabase.co/rest/v1/todos" \
+  -H "Authorization: Bearer [SESSION_TOKEN]" \
+  -H "apikey: [ANON_KEY]"
+```
+
+### Edge Functions (Custom API)
+- **AI Proxy**: `POST /functions/v1/ai-proxy` — Enhanced task generation via Groq Llama 3
+  - Requires: `Authorization: Bearer [SESSION_TOKEN]`
+  - Body: `{ "prompt": "string", "action": "create_tasks" | "enhance_task" }`
 
 ---
 
